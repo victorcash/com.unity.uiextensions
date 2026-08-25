@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## Release 3.0.1 - Unity 6.5 EntityId - 2026/08
+
+### Changed / Fixed
+
+- Replaced obsolete `Object.GetInstanceID()` with `GetEntityId()` so the package compiles on Unity 6.5 (`ColorPickerPresets` default PlayerPrefs key).
+- Removed the `GetInstanceID() >= 0` heuristic from `IsPrefab`; EntityId values are not signed and must not be used to infer prefab state.
+
 ## Release 3.0.0 - Unity 6, reimagined - 2026/06
 
 The V3 relaunch brings **full Unity 6 support**, a refreshed brand, and the start of a two-package ecosystem — the proven uGUI library you know, now joined by a modern UI Toolkit companion.

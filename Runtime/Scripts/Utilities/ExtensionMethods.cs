@@ -24,8 +24,6 @@ namespace UnityEngine.UI.Extensions
             return
                 !gameObject.scene.IsValid() &&
                 !gameObject.scene.isLoaded &&
-                gameObject.GetInstanceID() >= 0 &&
-                // I noticed that ones with IDs under 0 were objects I didn't recognize
                 !gameObject.hideFlags.HasFlag(HideFlags.HideInHierarchy);
                     // I don't care about GameObjects *inside* prefabs, just the overall prefab.
         }

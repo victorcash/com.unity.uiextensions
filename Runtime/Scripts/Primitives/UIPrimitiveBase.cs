@@ -43,7 +43,9 @@ namespace UnityEngine.UI.Extensions
 
         protected UIPrimitiveBase()
         {
+#if !UNITY_6000_6_OR_NEWER
             useLegacyMeshGeneration = false;
+#endif
         }
 
         /// <summary>
@@ -240,6 +242,12 @@ namespace UnityEngine.UI.Extensions
         public virtual float flexibleHeight { get { return -1; } }
 
         public virtual int layoutPriority { get { return 0; } }
+
+#if UNITY_6000_6_OR_NEWER
+        public virtual float maxWidth { get { return LayoutUtility.DefaultMaxSize; } }
+
+        public virtual float maxHeight { get { return LayoutUtility.DefaultMaxSize; } }
+#endif
 
         #endregion
 

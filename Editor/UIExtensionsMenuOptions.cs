@@ -157,7 +157,11 @@ namespace UnityEngine.UI.Extensions
 
 		private static void CreateEventSystem(bool select, GameObject parent)
 		{
+#if UNITY_6000_5_OR_NEWER
+			var esys = Object.FindAnyObjectByType<EventSystem>();
+#else
 			var esys = Object.FindFirstObjectByType<EventSystem>();
+#endif
 			if (esys == null)
 			{
 				var eventSystem = new GameObject("EventSystem");
@@ -189,7 +193,11 @@ namespace UnityEngine.UI.Extensions
 				return canvas.gameObject;
 
 			// No canvas in selection or its parents? Then use just any canvas..
+#if UNITY_6000_5_OR_NEWER
+			canvas = Object.FindAnyObjectByType<Canvas>();
+#else
 			canvas = Object.FindFirstObjectByType<Canvas>();
+#endif
 			if (canvas != null && canvas.gameObject.activeInHierarchy)
 				return canvas.gameObject;
 
@@ -1250,7 +1258,11 @@ namespace UnityEngine.UI.Extensions
 
 		private static void CreateToolTipItem(bool select, GameObject parent)
 		{
+#if UNITY_6000_5_OR_NEWER
+			var btti = Object.FindAnyObjectByType<BoundTooltipItem>();
+#else
 			var btti = Object.FindFirstObjectByType<BoundTooltipItem>();
+#endif
 			if (btti == null)
 			{
 				var boundTooltipItem = CreateUIObject("ToolTipItem", parent.GetComponentInParent<Canvas>().gameObject);

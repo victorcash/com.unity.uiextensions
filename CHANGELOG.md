@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## Release 3.0.2 - Unity 6.6 layout API - 2026/09
+
+### Changed / Fixed
+
+- Implemented `ILayoutElement.maxWidth` / `maxHeight` on `UIPrimitiveBase` so primitives compile against uGUI 2.6 (Unity 6.6).
+- Updated `FlowLayoutGroup` and `TableLayoutGroup` for the new `LayoutGroup.SetLayoutInputForAxis(min, max, preferred, flexible, axis)` signature.
+- Guarded `useLegacyMeshGeneration` (removed in Unity 6.6) on `UIPrimitiveBase` and `Sector`.
+- Replaced remaining `FindFirstObjectByType` / `FindObjectsByType(..., FindObjectsSortMode)` calls that are obsolete from Unity 6.5.
+- Marked `HSVChangedEvent` and `SelectionBox.SelectionEvent` as `[Serializable]` to satisfy Unity 6 serialization rules.
+- Stopped overriding obsolete-as-error `ModifyMesh(Mesh)` on `CUIGraphic` (Unity 6.6); the `VertexHelper` path remains.
+
 ## Release 3.0.1 - Unity 6.5 EntityId - 2026/08
 
 ### Changed / Fixed

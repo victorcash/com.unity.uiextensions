@@ -66,6 +66,7 @@ namespace UnityEngine.UI.Extensions
 		private IBoxSelectable clickedAfterDrag;
 
 		//Custom UnityEvent so we can add Listeners to this instance when Selections are changed.
+		[System.Serializable]
 		public class SelectionEvent : UnityEvent<IBoxSelectable[]> { }
 		public SelectionEvent onSelectionChange = new SelectionEvent();
 
@@ -181,7 +182,11 @@ namespace UnityEngine.UI.Extensions
 			// If we do not have a group of selectables already set, we'll just loop through every object that's a monobehaviour, and look for selectable interfaces in them
 			if (selectableGroup == null)
 			{
+#if UNITY_6000_5_OR_NEWER
+				behavioursToGetSelectionsFrom = GameObject.FindObjectsByType<MonoBehaviour>();
+#else
 				behavioursToGetSelectionsFrom = GameObject.FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None);
+#endif
 			}
 			else
 			{
